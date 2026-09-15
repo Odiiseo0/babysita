@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit - Bbysita</title>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilo clásico de ventana emergente de Windows */
+        .window {
+            width: 420px;
+            background-color: #f0f0f0;
+            border: 1px solid #716f6f;
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.7);
+            border-radius: 3px 3px 0 0;
+            display: none; /* Ocultas por defecto para ir mostrando una por una */
+            position: absolute;
+        }
+
+        .window-header {
+            background: linear-gradient(to right, #0058e6, #3a93ff);
+            color: white;
+            padding: 6px 10px;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .window-header .title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .window-header .close-btn {
+            background: #e81123;
+            color: white;
+            border: none;
+            width: 18px;
+            height: 18px;
+            font-size: 11px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .window-body {
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .window-body img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+        }
+
+        .message-text {
+            font-size: 14px;
+            color: #000;
+        }
+
+        .window-footer {
+            padding: 10px;
+            background: #e1e1e1;
+            text-align: right;
+            border-top: 1px solid #d4d4d4;
+        }
+
+        .ok-btn {
+            padding: 5px 20px;
+            background: #e1e1e1;
+            border: 1px solid #adadad;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 2px;
+        }
+
+        .ok-btn:hover {
+            background: #e5f1fb;
+            border-color: #0078d7;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ventana emergente interactiva -->
+    <div class="window" id="popupWindow">
+        <div class="window-header">
+            <div class="title">
+                <span>🎵</span>
+                <span id="windowTitle">Álvaro Díaz - Bbysita</span>
+            </div>
+            <button class="close-btn">×</button>
+        </div>
+        <div class="window-body">
+            <!-- Puedes cambiar la ruta de la imagen por la portada de tu preferencia -->
+            <div class="message-text" id="windowText">Cargando letra...</div>
+        </div>
+        <div class="window-footer">
+            <button class="ok-btn" onclick="siguienteFrase()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Letra de Bbysita para mostrar en secuencia
+        const letras = [
+            "Bbysita",
+            "Dímelo, ma'",
+            "Sabiendo cómo somo'",
+            "Y nos queremos ver",
+            "Pasamos la página",
+            "Pero el libro sigue abierto",
+            "Bbysita, tú sabe' que ere' mía",
+            "Aunque nos hagamo' daño"
+        ];
+
+        let indiceActual = 0;
+        const ventana = document.getElementById("popupWindow");
+        const textoVentana = document.getElementById("windowText");
+
+        function mostrarVentana() {
+            if (indiceActual < letras.length) {
+                textoVentana.textContent = letras[indiceActual];
+                ventana.style.display = "block";
+            } else {
+                // Al terminar, se reinicia o se oculta
+                indiceActual = 0;
+                mostrarVentana();
+            }
+        }
+
+        function siguienteFrase() {
+            indiceActual++;
+            mostrarVentana();
+        }
+
+        // Iniciar mostrando la primera frase al cargar la página
+        window.onload = function() {
+            mostrarVentana();
+        };
+    </script>
+
+</body>
+</html>
