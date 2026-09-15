@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit - Bbysita</title>
+    <title>Edit - El Último Baile</title>
     <style>
         body {
             background-color: #1e1e1e;
@@ -17,12 +17,12 @@
 
         /* Estilo clásico de ventana emergente de Windows */
         .window {
-            width: 420px;
+            width: 440px;
             background-color: #f0f0f0;
             border: 1px solid #716f6f;
             box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.7);
             border-radius: 3px 3px 0 0;
-            display: none; /* Ocultas por defecto para ir mostrando una por una */
+            display: none;
             position: absolute;
         }
 
@@ -62,16 +62,10 @@
             align-items: center;
         }
 
-        .window-body img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border: 1px solid #ccc;
-        }
-
         .message-text {
             font-size: 14px;
             color: #000;
+            line-height: 1.4;
         }
 
         .window-footer {
@@ -103,12 +97,11 @@
         <div class="window-header">
             <div class="title">
                 <span>🎵</span>
-                <span id="windowTitle">Álvaro Díaz - Bbysita</span>
+                <span id="windowTitle">Álvaro Díaz, Kablito - El Último Baile (Mia 5)</span>
             </div>
             <button class="close-btn">×</button>
         </div>
         <div class="window-body">
-            <!-- Puedes cambiar la ruta de la imagen por la portada de tu preferencia -->
             <div class="message-text" id="windowText">Cargando letra...</div>
         </div>
         <div class="window-footer">
@@ -117,16 +110,13 @@
     </div>
 
     <script>
-        // Letra de Bbysita para mostrar en secuencia
+        // Letra exacta de El Último Baile
         const letras = [
-            "Bbysita",
-            "Dímelo, ma'",
-            "Sabiendo cómo somo'",
-            "Y nos queremos ver",
-            "Pasamos la página",
-            "Pero el libro sigue abierto",
-            "Bbysita, tú sabe' que ere' mía",
-            "Aunque nos hagamo' daño"
+            "El último baile",
+            "Contigo era perfecto todo lo imperfecto",
+            "Y tú me quisiste así, con to's mis defectos",
+            "Como digo que te extraño, como soy honesto",
+            "Si ahora no puedo enviarte ni un mensaje 'e texto"
         ];
 
         let indiceActual = 0;
@@ -138,7 +128,7 @@
                 textoVentana.textContent = letras[indiceActual];
                 ventana.style.display = "block";
             } else {
-                // Al terminar, se reinicia o se oculta
+                // Al terminar se reinicia el ciclo
                 indiceActual = 0;
                 mostrarVentana();
             }
